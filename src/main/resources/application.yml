@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: jplugins-util-jwt
+
+jplugins:
+  util:
+    jwt:
+      secret-key: B1uVNEBOVmTC76lnduBfL4bFJuCLwMNycOfLf7y+XqU=

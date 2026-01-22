@@ -1,0 +1,3 @@
+org.jplugins.util.config.JwtUtilAutoConfiguration
+org.jplugins.util.config.JwtClaimsUtilAutoConfiguration
+org.jplugins.util.config.PropertiesAutoConfiguration
