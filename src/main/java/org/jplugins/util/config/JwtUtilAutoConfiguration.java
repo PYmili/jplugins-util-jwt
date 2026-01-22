@@ -9,6 +9,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
 
+/**
+ * 对 {@link JwtUtil} 进行自动装配
+ * @author PYmili
+ */
 @AutoConfiguration
 @ConditionalOnMissingBean(JwtUtil.class)
 @AutoConfigureOrder(Ordered.LOWEST_PRECEDENCE)

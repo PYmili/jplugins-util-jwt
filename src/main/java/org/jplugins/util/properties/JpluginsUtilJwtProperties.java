@@ -5,12 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * JwtUtil的配置类
+ * @author PYmili
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -45,6 +48,10 @@ public class JpluginsUtilJwtProperties {
      */
     private String secretKey;
 
+    /**
+     * 获取配置文件设置的密钥
+     * @return {@link SecretKey}
+     */
     public SecretKey getSecretKey() {
         // 判断密钥字符串是否合法
         if (!StringUtils.hasText(secretKey)) {

@@ -8,24 +8,39 @@
         <version>3.5.9</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.jplugins.util</groupId>
+    <groupId>io.github.pymili</groupId>
     <artifactId>jplugins-util-jwt</artifactId>
     <version>0.0.1</version>
     <name>jplugins-util-jwt</name>
     <description>jplugins-util-jwt</description>
-    <url />
+    <url>https://github.com/PYmili/jplugins-util-jwt</url>
     <licenses>
-        <license />
+        <license>
+            <name>MIT License</name>
+            <url>https://mit-license.org/</url>
+            <distribution>repo</distribution>
+        </license>
     </licenses>
     <developers>
-        <developer />
+        <developer>
+            <name>PYmili</name>
+            <email>mc2005wj@163.com</email>
+            <timezone>+8</timezone>
+            <roles>
+                <role>Project Manager</role>
+            </roles>
+        </developer>
     </developers>
     <scm>
-        <connection />
+        <connection>https://github.com/PYmili/jplugins-util-jwt.git</connection>
         <developerConnection />
         <tag />
-        <url />
+        <url>https://github.com/PYmili/jplugins-util-jwt</url>
     </scm>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/PYmili/jplugins-util-jwt/issues</url>
+    </issueManagement>
     <properties>
         <java.version>21</java.version>
     </properties>
@@ -50,7 +65,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
-            <scope>annotationProcessor</scope>
             <optional>true</optional>
         </dependency>
 
@@ -75,7 +89,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>annotationProcessor</scope>
             <optional>true</optional>
         </dependency>
     </dependencies>
@@ -98,10 +111,12 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+            <!-- 编译jar插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
             </plugin>
+            <!-- 编译源代码插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -110,6 +125,49 @@
                         <id>attach-sources</id>
                         <goals>
                             <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 发布到中央仓库的插件 -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.10.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
+            </plugin>
+            <!-- javadoc插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.11.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- gpg插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.8</version>
+                <configuration>
+                    <executable>D:\ProgrammingFolder\OtherTools\GnuPG\bin\gpg.exe</executable>
+                    <keyname>PYmili</keyname>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
